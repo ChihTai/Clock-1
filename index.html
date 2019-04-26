@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clock</title>
+    <style>
+
+    /*
+		text-shadow
+		水平位置 垂直位置 模糊大小 陰影尺寸 顏色
+	
+        box-shadow: 5px 5px 10px 5px #00ff00; */
+        /* 不透明度 
+        opacity: 0.5;*/
+        #clock{
+            width: 800px;
+            height: 750px;
+            border-radius: 50%;
+            background: rgb(0, 174, 255);
+
+            position: relative;
+        }
+        #hour{
+            height: 5px; /*寬度  */
+            width: 10%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            background: rgb(247, 247, 27);
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform-origin: right center; /* 基準點 */
+            box-shadow: 5px 5px 10px 5px #f03e23;
+            /* transform: rotate(60deg); */
+        }
+        #minute{
+            height: 3px; /*寬度  */
+            width: 20%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            background: rgb(128, 167, 240);
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform-origin: right center;  /*  基準點 */
+            box-shadow: 5px 5px 10px 5px #6cc4df;
+           /*  transform: rotate(180deg); */
+        }
+        #second{
+            height: 3px; /*寬度  */
+            width: 20%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            background: lightgreen;
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform-origin: right center;  /* 基準點 */
+            box-shadow: 5px 5px 10px 5px #e75bdc;
+           /*  transform: rotate(200deg); */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock">
+            <img src="bg1.jpg" alt="">
+        <div id="hour"></div>
+        <div id="minute"></div>
+    <!--  div#second -->
+        <div id="second"></div>
+    </div>
+    <script>
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+     
+        setInterval(updateTime, 1000);
+
+        function updateTime(){
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            hour.style.transform = `rotate( ${h*30+90}deg )`; //一小時動30度,90度是校正為直的
+            minute.style.transform = `rotate( ${m*6+90}deg )`;   //rotate( ${m*6+90}deg )  =>rotate() 括號跟rotate中間不能空格       
+            second.style.transform = `rotate( ${s*6+90}deg )`;
+        }
+        updateTime();
+    </script>
+        
+</body>
+</html>
