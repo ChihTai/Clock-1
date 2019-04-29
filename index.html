@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clock</title>
@@ -14,6 +14,7 @@
         box-shadow: 5px 5px 10px 5px #00ff00; */
         /* 不透明度 
         opacity: 0.5;*/
+
         #clock{
             width: 800px;
             height: 750px;
@@ -21,6 +22,17 @@
             background: rgb(0, 174, 255);
 
             position: relative;
+        }
+        #r{
+            height: 15px; /*寬度  */
+            width: 1.5%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            border-radius: 50%;
+            background: rgb(116, 223, 95);
+            position: absolute;
+            top: 49.5%;
+            left: 49.5%;
+            transform-origin: right center; /* 基準點 */
+            
         }
         #hour{
             height: 5px; /*寬度  */
@@ -41,7 +53,7 @@
             top: 50%;
             left: 30%;
             transform-origin: right center;  /*  基準點 */
-            box-shadow: 5px 5px 10px 5px #6cc4df;
+            box-shadow: 5px 5px 10px 5px #c2ee90;
            /*  transform: rotate(180deg); */
         }
         #second{
@@ -61,10 +73,11 @@
 
     <div id="clock">
             <img src="bg1.jpg" alt="">
-        <div id="hour"></div>
-        <div id="minute"></div>
+        <div id="hour" style="transform: rotate(510deg);"></div>
+        <div id="minute" style="transform: rotate(378deg);"></div>
     <!--  div#second -->
-        <div id="second"></div>
+        <div id="second" style="transform: rotate(222deg);"></div>
+        <div id="r"></div>
     </div>
     <script>
         const hour = document.getElementById("hour");
@@ -83,7 +96,8 @@
             second.style.transform = `rotate( ${s*6+90}deg )`;
         }
         updateTime();
+
     </script>
         
-</body>
-</html>
+
+</body></html>
