@@ -23,20 +23,21 @@
 
             position: relative;
         }
-        #r{
-            height: 15px; /*寬度  */
-            width: 1.5%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
-            border-radius: 50%;
-            background: rgb(116, 223, 95);
+        #word{
+            height: 50px; 
+            width: 1000px;
+          /*   background: rgb(116, 223, 95); */
             position: absolute;
-            top: 49.5%;
-            left: 49.5%;
-            transform-origin: right center; /* 基準點 */
-            
+            top: 50%;
+            left: 100%;
+            font-size: 300%;
+            color: rgb(23, 96, 207);
+            font-style:oblique;
+            font-weight: bold;
         }
         #hour{
-            height: 5px; /*寬度  */
-            width: 10%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            height: 5px; 
+            width: 10%; /* width+left 要等於半徑的長度 */
             background: rgb(247, 247, 27);
             position: absolute;
             top: 50%;
@@ -46,7 +47,7 @@
             /* transform: rotate(60deg); */
         }
         #minute{
-            height: 3px; /*寬度  */
+            height: 3px;
             width: 20%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
             background: rgb(128, 167, 240);
             position: absolute;
@@ -57,8 +58,8 @@
            /*  transform: rotate(180deg); */
         }
         #second{
-            height: 3px; /*寬度  */
-            width: 20%;/* 直徑長度 */ /* width+left 要等於半徑的長度 */
+            height: 3px; 
+            width: 20%; /* width+left 要等於半徑的長度 */
             background: lightgreen;
             position: absolute;
             top: 50%;
@@ -77,24 +78,39 @@
         <div id="minute" style="transform: rotate(378deg);"></div>
     <!--  div#second -->
         <div id="second" style="transform: rotate(222deg);"></div>
-        <div id="r"></div>
+        <div id="word" ;></div>
     </div>
     <script>
         document.body.style.overflow = "hidden"
         const hour = document.getElementById("hour");
         const minute = document.getElementById("minute");
         const second = document.getElementById("second");
-     
+
         setInterval(updateTime, 1000);
 
         function updateTime(){
             let date = new Date();
+
             let h = date.getHours();
             let m = date.getMinutes();
             let s = date.getSeconds();
             hour.style.transform = `rotate( ${h*30+90}deg )`; //一小時動30度,90度是校正為直的
             minute.style.transform = `rotate( ${m*6+90}deg )`;   //rotate( ${m*6+90}deg )  =>rotate() 括號跟rotate中間不能空格       
             second.style.transform = `rotate( ${s*6+90}deg )`;
+
+            if(s<=10){
+                document.getElementById("word").innerHTML="凡是每天喝水的人，有高機率在100年內死去";
+            }else if(s>=11 & s<=20){
+                document.getElementById("word").innerHTML="在非洲，每六十秒，就有一分鐘過去";
+            }else if(s>=21 & s<=30){
+                document.getElementById("word").innerHTML="每呼吸60秒，就減少一分鐘的壽命";
+            }else if(s>=31 && s<=40){
+                document.getElementById("word").innerHTML="台灣人在睡覺時，大多數的美國人都在工作";
+            }else if(s>=41 && s<=50){
+                document.getElementById("word").innerHTML="當你的左臉被人打，那你的左臉就會痛";
+            }else{
+                document.getElementById("word").innerHTML="當蝴蝶在南半球拍了兩下翅膀，牠就會稍微飛高一點點";
+            }
         }
         updateTime();
 
